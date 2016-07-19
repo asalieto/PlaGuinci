@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 	private RaycastHit hit;
 	private GameObject Model;
 	public Sword weapon;
+	private GameObject[] ways;
 
 	public int souls = 10;
 
@@ -78,17 +79,33 @@ public class Player : MonoBehaviour {
 					Model.transform.position = this.transform.position - (this.transform.right * 1.5f);
 					Model.transform.localRotation = this.transform.localRotation;
 					Model.GetComponentInChildren<CapsuleCollider> ().isTrigger = true;
+
+					ways = GameObject.FindGameObjectsWithTag ("Way");
+
+					foreach (GameObject way in ways) {
+						way.GetComponent<MeshRenderer>().enabled = true;
+					}
 				}
 			}
 			//Cancelar (por si los bugs)
 			if(Input.GetButtonDown ("Fire2" + player.ToString())){
 				colocando = false;
+				ways = GameObject.FindGameObjectsWithTag ("Way");
+
+				foreach (GameObject way in ways) {
+					way.GetComponent<MeshRenderer>().enabled = false;
+				}
 				Destroy (Model);
 			}
 
 		} else {
 			//Cancelar (por si los bugs)
 			if(colocando == true){
+				ways = GameObject.FindGameObjectsWithTag ("Way");
+
+				foreach (GameObject way in ways) {
+					way.GetComponent<MeshRenderer>().enabled = false;
+				}
 				colocando = false;
 				Destroy (Model);
 			}

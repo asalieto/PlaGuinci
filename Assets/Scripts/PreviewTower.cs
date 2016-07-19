@@ -6,9 +6,10 @@ public class PreviewTower : MonoBehaviour {
 
 	private int numColisions;
 	public int cost;
-	private GameObject Model;
 	private MeshRenderer[] renderers;
-    public GameObject Tower;
+	private GameObject[] ways;
+	public GameObject Tower;
+	private GameObject Model;
 
 	// Use this for initialization
 	void Start () {
@@ -34,11 +35,21 @@ public class PreviewTower : MonoBehaviour {
 			Model.transform.position = this.transform.position;
 			Model.transform.GetComponent <CapsuleCollider> ().isTrigger = false;
 
+			ways = GameObject.FindGameObjectsWithTag ("Way");
+
+			foreach (GameObject way in ways) {
+				way.GetComponent<MeshRenderer>().enabled = false;
+			}
 			Destroy (this.gameObject);
 		}
 
 		if (Input.GetButtonDown ("Fire2" + this.transform.GetComponentInParent<Player> ().player.ToString())) {
 			//Cancel
+			ways = GameObject.FindGameObjectsWithTag ("Way");
+
+			foreach (GameObject way in ways) {
+				way.GetComponent<MeshRenderer>().enabled = false;
+			}
 			this.transform.GetComponentInParent<Player> ().colocando = false;
 			Destroy (this.gameObject);
 		}

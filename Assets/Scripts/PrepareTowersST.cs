@@ -13,7 +13,7 @@ public class PrepareTowersST : State {
 		timeToChange = 20.0f;
 		timeToExit = 0;
 
-		//GameObject.FindGameObjectWithTag ("Batalla").gameObject.SetActive(true);	
+		GameObject.Find ("Canvas").transform.FindChild("preparacion").gameObject.SetActive(true);	
 	}
 
 	void Start(){

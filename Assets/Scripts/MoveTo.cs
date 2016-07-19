@@ -13,5 +13,9 @@ public class MoveTo : MonoBehaviour {
 
 	void Update(){
 		agent.destination = goal.position; 
+		if (Vector3.Distance (this.transform.position, goal.position) < 4.5f) {
+			Destroy (this.gameObject);
+			GameObject.FindWithTag ("MainCamera").GetComponent<GameScr> ().enterEnemy ();
+		}
 	}
 }

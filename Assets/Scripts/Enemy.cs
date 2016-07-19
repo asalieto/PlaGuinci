@@ -44,10 +44,9 @@ public class Enemy : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-		if (col.gameObject.tag == "Bullet")
-		{
-			ReceiveDmg(col.GetComponent<ProjectileBehavior>().damage);
-			Destroy(col.gameObject);
+		if (col.gameObject.tag == "Bullet") {
+			ReceiveDmg (col.GetComponent<ProjectileBehavior> ().damage);
+			Destroy (col.gameObject);
 		}
 	}
 	
@@ -55,5 +54,5 @@ public class Enemy : MonoBehaviour {
     {
         float healthNormalized = health / maxHealth;
         healthBar.transform.localScale = new Vector3(healthNormalized, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
-    }
+	}
 }

@@ -13,7 +13,8 @@ public class RespawnEnemiesSM : State {
 		Debug.Log ("Entrando en el estado de RespawnEnemiesSM");
 		GameObject.FindGameObjectsWithTag ("Player") [0].GetComponent<Player> ().prepareGame = false;
 		GameObject.FindGameObjectsWithTag ("Player") [1].GetComponent<Player> ().prepareGame = false;
-		/** AQUI IRIA MOSTRAR LA HUD, SE PUEDE LLAMAR A UN METODO DIRECTAMENTE */
+
+		GameObject.Find ("Canvas").transform.FindChild("batalla").gameObject.SetActive(true);	
 	}
 
 	void Start(){
