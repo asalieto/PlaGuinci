@@ -13,6 +13,7 @@ public class quitCanvas : MonoBehaviour {
 	void Update () {
 		time -= Time.deltaTime;
 		if (time <= 0.0f) {
+			time = 3.0f;
 			this.gameObject.SetActive (false);
 		}
 	}
